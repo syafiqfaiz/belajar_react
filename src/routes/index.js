@@ -3,12 +3,24 @@ import { StackNavigator } from 'react-navigation';
 
 import AuthorizedScreen from './authorized';
 import UnauthorizedScreen from './unauthorized';
+import localStorage from '../lib/LocalStorage'
 
-class App extends Component {
+class RouteNavigation extends Component {
   constructor(props){
     super(props)
     this.state = {
       isLogin: false
+    }
+  }
+
+  componentWillMount(){
+    this.query()
+  }
+
+  async query() {
+    let token = await localStorage.getItem('token')
+    if (token) {
+      this.setState({ isLogin: true})
     }
   }
 
@@ -35,4 +47,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default RouteNavigation
