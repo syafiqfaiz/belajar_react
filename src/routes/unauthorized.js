@@ -4,7 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import LoginScreen from '../screens/Unauthorized/LoginScreen';
 import RegisterScreen from '../screens/Unauthorized/RegisterScreen';
 
-constant RootNav = StackNavigator({
+const RootNav = StackNavigator({
   Register: {
     screen: RegisterScreen,
   },

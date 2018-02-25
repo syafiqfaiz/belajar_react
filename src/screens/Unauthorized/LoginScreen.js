@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Button,
+  TextInput
 } from 'react-native';
 
 export default class LoginScreen extends Component {

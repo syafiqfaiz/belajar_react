@@ -3,7 +3,7 @@ import { StackNavigator } from 'react-navigation';
 
 import FeedScreen from '../screens/Authorized/FeedScreen';
 
-constant RootNav = StackNavigator({
+const RootNav = StackNavigator({
   Home: {
     screen: FeedScreen,
   }

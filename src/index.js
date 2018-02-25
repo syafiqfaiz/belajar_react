@@ -7,15 +7,12 @@ import {
   View
 } from 'react-native';
 
-type Props = {};
-export default class App extends Component<Props> {
+import RootNav from './routes';
+
+export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>
-          Home Screen 122
-        </Text>
-      </View>
+      <RootNav/>
     );
   }
 }
