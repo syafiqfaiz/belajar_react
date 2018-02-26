@@ -2,16 +2,26 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
+import localStorage from '../../lib/LocalStorage'
 
 export default class SettingScreen extends Component {
+  logout() {
+    localStorage.removeItem('token')
+    this.props.navigation.navigate('Unauthorized')
+  }
   render() {
     return (
       <View style={styles.container}>
         <Text>
-          Setting screen
+          Setting Screen
         </Text>
+        <Button
+          onPress={ () =>this.logout() }
+          title='Logout'
+        />
       </View>
     );
   }

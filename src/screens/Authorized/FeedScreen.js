@@ -17,7 +17,6 @@ export default class FeedScreen extends Component {
     this.state = {
       lists: []
     }
-    // this.renderCard = this.renderCard.bind(this);
   }
 
   componentWillMount(){
