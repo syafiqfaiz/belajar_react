@@ -18,7 +18,9 @@ export default class LoginScreen extends Component {
     this.state = {
       email: '',
       password: '',
-      authenticating: false
+      authenticating: false,
+      user: null,
+      error: '',
     };
   }
 
@@ -40,25 +42,32 @@ export default class LoginScreen extends Component {
     // }
 
     firebase.auth().signInWithEmailAndPassword(email, password)
-          .then(user => this.setState({
-            authenticating: false,
-            user,
-            error: '',
-          }))
-          .catch(() => {
-            // Login was not successful
-            firebase.auth().createUserWithEmailAndPassword(email, password)
-              .then(user => this.setState({
-                authenticating: false,
-                user,
-                error: '',
-              }))
-              .catch(() => this.setState({
-                authenticating: false,
-                user: null,
-                error: 'Authentication Failure',
-              }))
-          })
+      .then((user) => { this.setState({
+        authenticating: false,
+        user,
+        error: '',
+        })
+        localStorage.setItem('token', 'aaaaa')
+        this.props.navigation.navigate('Authorized')
+      })
+      .catch((error) => {
+        this.setState({
+          error: error.message,
+          authenticating: false,
+        })
+        // Login was not successful
+        // firebase.auth().createUserWithEmailAndPassword(email, password)
+        //   .then(user => this.setState({
+        //     authenticating: false,
+        //     user,
+        //     error: '',
+        //   }))
+        //   .catch(() => this.setState({
+        //     authenticating: false,
+        //     user: null,
+        //     error: 'Authentication Failure',
+        //   }))
+      })
   }
 
   renderCurrentState() {
@@ -71,6 +80,7 @@ export default class LoginScreen extends Component {
     }
     return (
       <View style={styles.form}>
+        <Text>{this.state.error}</Text>
         <Input
           label = 'Email'
           placeholder = 'Enter your email'
